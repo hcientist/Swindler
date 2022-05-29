@@ -186,6 +186,83 @@ You can run the example project from the command line.
 swift run
 ```
 
+#### Notes for the Newbs
+
+1. It's the (implied/included) `swift build` step of `swift run` that fetches the dependencies in the Package.swift
+1. the first time you run this from the command line, you'll have to grant your terminal app (iTerm2 in my case) permission in the Accessibility section. I didn't see the window prompting me to open system prefs the first time. either it didn't open or opened in back. I killed and launched again and it prompted me. see some sort of output about this below.
+
+```
+~/dev ❯❯❯ git clone git@github.com:hcientist/Swindler.git
+Cloning into 'Swindler'...
+remote: Enumerating objects: 3643, done.
+remote: Counting objects: 100% (614/614), done.
+remote: Compressing objects: 100% (172/172), done.
+remote: Total 3643 (delta 430), reused 590 (delta 424), pack-reused 3029
+Receiving objects: 100% (3643/3643), 2.81 MiB | 12.05 MiB/s, done.
+Resolving deltas: 100% (2586/2586), done.
+~/dev ❯❯❯ cd Swindler
+~/d/Swindler ❯❯❯ git submodule init
+~/d/Swindler ❯❯❯ git submodule update
+~/d/Swindler ❯❯❯
+~/d/Swindler ❯❯❯ swift build
+warning: Usage of /Users/tgm/Library/org.swift.swiftpm/collections.json has been deprecated. Please delete it and use the new /Users/tgm/Library/org.swift.swiftpm/configuration/collections.json instead.
+Fetching https://github.com/mxcl/PromiseKit.git from cache
+Fetching https://github.com/Quick/Nimble.git from cache
+Fetching https://github.com/tmandry/AXSwift.git from cache
+Fetched https://github.com/mxcl/PromiseKit.git (0.36s)
+Fetched https://github.com/tmandry/AXSwift.git (0.36s)
+Fetched https://github.com/Quick/Nimble.git (0.36s)
+Fetching https://github.com/Quick/Quick.git from cache
+Fetched https://github.com/Quick/Quick.git (0.45s)
+Computing version for https://github.com/Quick/Nimble.git
+Computed https://github.com/Quick/Nimble.git at 7.3.4 (0.04s)
+Computing version for https://github.com/Quick/Quick.git
+Computed https://github.com/Quick/Quick.git at 4.0.0 (0.03s)
+Computing version for https://github.com/mxcl/PromiseKit.git
+Computed https://github.com/mxcl/PromiseKit.git at 6.13.3 (0.04s)
+Computing version for https://github.com/tmandry/AXSwift.git
+Computed https://github.com/tmandry/AXSwift.git at 0.3.2 (0.03s)
+Creating working copy for https://github.com/mxcl/PromiseKit.git
+Working copy of https://github.com/mxcl/PromiseKit.git resolved at 6.13.3
+Creating working copy for https://github.com/Quick/Quick.git
+Working copy of https://github.com/Quick/Quick.git resolved at 4.0.0
+Creating working copy for https://github.com/Quick/Nimble.git
+Working copy of https://github.com/Quick/Nimble.git resolved at 7.3.4
+Creating working copy for https://github.com/tmandry/AXSwift.git
+Working copy of https://github.com/tmandry/AXSwift.git resolved at 0.3.2
+Building for debugging...
+/Users/tgm/dev/Swindler/.build/checkouts/PromiseKit/Sources/Thenable.swift:4:27: warning: using 'class' keyword to define a class-constrained protocol is deprecated; use 'AnyObject' instead
+public protocol Thenable: class {
+                          ^~~~~
+                          AnyObject
+/Users/tgm/dev/Swindler/.build/checkouts/PromiseKit/Sources/Thenable.swift:4:27: warning: using 'class' keyword to define a class-constrained protocol is deprecated; use 'AnyObject' instead
+public protocol Thenable: class {
+                          ^~~~~
+                          AnyObject
+/Users/tgm/dev/Swindler/.build/checkouts/PromiseKit/Sources/Thenable.swift:4:27: warning: using 'class' keyword to define a class-constrained protocol is deprecated; use 'AnyObject' instead
+public protocol Thenable: class {
+                          ^~~~~
+                          AnyObject
+/Users/tgm/dev/Swindler/.build/checkouts/PromiseKit/Sources/when.swift:142:9: warning: variable 'root' was never mutated; consider changing to 'let' constant
+    var root = Promise<[It.Element.T]>.pending()
+    ~~~ ^
+    let
+[43/43] Linking SwindlerExample
+Build complete! (9.34s)
+~/d/Swindler ❯❯❯ swift run
+warning: Usage of /Users/tgm/Library/org.swift.swiftpm/collections.json has been deprecated. Please delete it and use the new /Users/tgm/Library/org.swift.swiftpm/configuration/collections.json instead.
+Building for debugging...
+Build complete! (0.08s)
+Not trusted as an AX process; please authorize and re-launch
+~/d/Swindler ❯❯❯ swift run
+warning: Usage of /Users/tgm/Library/org.swift.swiftpm/collections.json has been deprecated. Please delete it and use the new /Users/tgm/Library/org.swift.swiftpm/configuration/collections.json instead.
+Building for debugging...
+Build complete! (0.07s)
+Space changed: [9418]
+Known windows updated
+screens: ["Unknown screen" (0.0, 0.0, 1728.0, 1117.0)]
+^C
+```
 
 
 ## Contact
